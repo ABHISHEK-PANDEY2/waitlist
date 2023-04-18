@@ -10,8 +10,8 @@ function App() {
       <Navbar />
       <div className="h-full w-full">
         <TopNav />
-        <div className="">
-          <Create />
+        <div className="px-8 py-5 ">
+          <Home />
         </div>
       </div>
     </div>

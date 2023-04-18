@@ -1,7 +1,7 @@
 const Create = () => {
   return (
     <>
-      <div className="px-8 py-5 text-start">
+      <div className="text-start">
         <h2 className="font-bold text-3xl">Create New Waitlist</h2>
         <section className="mt-8">
           <div className="border border-x-0 border-t-0 border-b border-Gray py-6 flex gap-5 items-center justify-between">
