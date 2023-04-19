@@ -4,6 +4,7 @@ import Navbar from "./components/navbar";
 import TopNav from "./components/topNav";
 import Create from "./pages/Create";
 import { Routes, BrowserRouter as Router, Route } from "react-router-dom";
+import Waitlist from "./pages/Waitlist";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/create" element={<Create />} />
+              <Route path="/waitlist" element={<Waitlist />} />
             </Routes>
           </div>
         </div>

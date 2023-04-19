@@ -30,9 +30,11 @@ const Navbar = () => {
             Waitlists
           </h5>
           <ul className="flex flex-col mt-2 gap-3">
-            <li className="flex items-center gap-2">
-              <LinkOutlined className="my-auto" />
-              Test
+            <li>
+              <Link to="/waitlist" className="flex items-center gap-2">
+                <LinkOutlined className="my-auto" />
+                Test
+              </Link>
             </li>
           </ul>
         </div>
