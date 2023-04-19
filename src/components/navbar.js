@@ -3,6 +3,7 @@ import {
   PlusCircleOutlined,
   LinkOutlined,
 } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -13,11 +14,15 @@ const Navbar = () => {
         </div>
         <ul className="flex flex-col mt-5 gap-3">
           <li className="flex items-center gap-2">
-            <HomeOutlined className="my-auto" />
-            Home
+            <Link to="/" className="flex items-center gap-2">
+              <HomeOutlined className="my-auto" />
+              Home
+            </Link>
           </li>
           <li className="flex items-center gap-2">
-            <PlusCircleOutlined /> Create New
+            <Link to="/create" className="flex items-center gap-2">
+              <PlusCircleOutlined /> Create New
+            </Link>
           </li>
         </ul>
         <div className="mt-8">
