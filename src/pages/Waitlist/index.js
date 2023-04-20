@@ -1,9 +1,11 @@
-import List from "../../components/list";
+import ComponentNav from "../../components/ComponentNav";
+import { Outlet } from "react-router-dom";
 
 const Waitlist = () => {
   return (
     <>
-      <List />
+      <ComponentNav />
+      <Outlet />
     </>
   );
 };

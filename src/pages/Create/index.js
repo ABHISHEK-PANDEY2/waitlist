@@ -1,4 +1,16 @@
+import { useState } from "react";
+import { createWaitlist } from "../../config/firebase.config";
+
 const Create = () => {
+  const [waitlistName, setWaitlistName] = useState("");
+  const [id, setId] = useState();
+  const url = id ? `http://localhost:5000?id=${id}` : "";
+  const handleSubmit = async () => {
+    const listId = await createWaitlist(waitlistName);
+    console.log(listId);
+    setId(listId);
+  };
+
   return (
     <>
       <div className="text-start">
@@ -15,6 +27,10 @@ const Create = () => {
             <input
               className="border border-GrayDark outline-none px-3 rounded-md w-full h-10 max-w-xl"
               type="text"
+              value={waitlistName}
+              onChange={(e) => {
+                setWaitlistName(e.target.value);
+              }}
             />
           </div>
 
@@ -29,6 +45,7 @@ const Create = () => {
               className="border border-GrayDark outline-none px-3 rounded-md w-full h-10 max-w-xl"
               placeholder="https://example.com"
               type="text"
+              value={url}
             />
           </div>
 
@@ -46,6 +63,14 @@ const Create = () => {
                 type="checkbox"
               />
             </div>
+          </div>
+          <div className="flex">
+            <button
+              className="px-5 py-2 border-none bg-blue text-white font-semibold rounded-md mt-3 mx-auto"
+              onClick={handleSubmit}
+            >
+              Create
+            </button>
           </div>
         </section>
       </div>

@@ -4,8 +4,16 @@ import {
   LinkOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import { useUserData } from "../context/useUserData";
+import { useEffect } from "react";
 
 const Navbar = () => {
+  const { getWaitlists, allWaitlist, setSelectedWaitlist } = useUserData();
+  useEffect(() => {
+    getWaitlists();
+    console.log(allWaitlist);
+  }, []);
+
   return (
     <>
       <nav className="w-[19%] h-full border border-Gray px-5 py-3">
@@ -30,12 +38,22 @@ const Navbar = () => {
             Waitlists
           </h5>
           <ul className="flex flex-col mt-2 gap-3">
-            <li>
-              <Link to="/waitlist" className="flex items-center gap-2">
-                <LinkOutlined className="my-auto" />
-                Test
-              </Link>
-            </li>
+            {allWaitlist.map((list, i) => {
+              return (
+                <li key={i}>
+                  <Link
+                    to="/waitlist"
+                    onClick={() => {
+                      setSelectedWaitlist(list.waitlist_id);
+                    }}
+                    className="flex items-center gap-2"
+                  >
+                    <LinkOutlined className="my-auto" />
+                    {list.waitlist_name}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </nav>
