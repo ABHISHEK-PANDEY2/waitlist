@@ -7,10 +7,21 @@ export const UserDataProvider = ({ children }) => {
   const [allWaitlist, setAllWaitlist] = useState([]);
   const [selectedWaitlist, setSelectedWaitlist] = useState("");
   const [allSignups, setAllSignups] = useState([]);
+  const [generalDetail, setGeneralDetail] = useState();
+  const deployedUrl = "https://waitlist-site.web.app";
 
   const getWaitlists = async () => {
     const data = await getAllWaitlist();
     setAllWaitlist(data);
+  };
+
+  const getGeneralDetail = () => {
+    console.log(selectedWaitlist);
+    const detail = allWaitlist.filter(
+      (list) => list.waitlist_id == selectedWaitlist
+    );
+    console.log(detail);
+    setGeneralDetail(...detail);
   };
 
   const getAllSignups = async () => {
@@ -22,12 +33,15 @@ export const UserDataProvider = ({ children }) => {
   return (
     <UserDataContext.Provider
       value={{
+        deployedUrl,
         allWaitlist,
         getWaitlists,
         selectedWaitlist,
         setSelectedWaitlist,
         allSignups,
         getAllSignups,
+        getGeneralDetail,
+        generalDetail,
       }}
     >
       {children}

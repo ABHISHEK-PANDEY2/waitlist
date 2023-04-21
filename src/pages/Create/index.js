@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { createWaitlist } from "../../config/firebase.config";
+import { useUserData } from "../../context/useUserData";
 
 const Create = () => {
+  const { deployedUrl } = useUserData();
   const [waitlistName, setWaitlistName] = useState("");
   const [id, setId] = useState();
-  const url = id ? `http://localhost:5000?id=${id}` : "";
+  const url = id ? `${deployedUrl}/?id=${id}` : "";
   const handleSubmit = async () => {
     const listId = await createWaitlist(waitlistName);
     console.log(listId);

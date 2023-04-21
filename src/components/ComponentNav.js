@@ -6,6 +6,9 @@ const ComponentNav = () => {
       <div>
         <h2 className="font-bold text-3xl">Waitlist</h2>
         <div className="py-3 text-sm flex gap-5 border-0 border-b border-GrayDark">
+          <Link to="/waitlist/general">
+            <span className="font-semibold text-GrayText">General</span>
+          </Link>
           <Link to="/waitlist/widget">
             <span className="font-semibold text-GrayText">Widget Builder</span>
           </Link>
