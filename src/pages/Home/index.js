@@ -8,7 +8,7 @@ const Home = () => {
     <>
       <section className="">
         <p className="font-semibold text-GrayText mb-5">All Waitlist</p>
-        <div className="flex flex-auto flex-wrap gap-5">
+        <div className="flex flex-auto flex-wrap gap-5 justify-center">
           {allWaitlist.map((list, i) => {
             return (
               <Link
@@ -21,7 +21,7 @@ const Home = () => {
                   key={i}
                   className="min-w-fit border border-GrayDark rounded-md flex"
                 >
-                  <div className="h-full bg-[#493ee6] text-white py-5 px-6 rounded-l-md flex items-center">
+                  <div className=" bg-[#493ee6] text-white py-5 px-6 rounded-l-md flex items-center">
                     {list.waitlist_name.toUpperCase().slice(0, 2)}
                   </div>
                   <div className="px-3 py-2 m-auto">
