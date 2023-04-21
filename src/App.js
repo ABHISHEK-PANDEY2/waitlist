@@ -24,7 +24,7 @@ function App() {
           <Navbar />
           <div className="h-full w-full">
             <TopNav />
-            <div className="px-8 py-5 ">
+            <div className="px-5 py-5 lg:px-8 ">
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/create" element={<Create />} />

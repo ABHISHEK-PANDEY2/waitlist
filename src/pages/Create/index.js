@@ -18,7 +18,7 @@ const Create = () => {
       <div className="text-start">
         <h2 className="font-bold text-3xl">Create New Waitlist</h2>
         <section className="mt-8">
-          <div className="border border-x-0 border-t-0 border-b border-Gray py-6 flex gap-5 items-center justify-between">
+          <div className="border border-x-0 border-t-0 border-b border-Gray py-6 flex flex-col lg:flex-row gap-5 items-center justify-between">
             <div>
               <h5 className="font-bold">Waitlist Name</h5>
               <p className="text-GrayText">
@@ -36,8 +36,8 @@ const Create = () => {
             />
           </div>
 
-          <div className="border border-x-0 border-t-0 border-b border-Gray py-6 flex gap-5 items-center justify-between">
-            <div>
+          <div className="border border-x-0 border-t-0 border-b border-Gray py-6 flex flex-col lg:flex-row gap-5 items-center justify-between">
+            <div className="w-full">
               <h5 className="font-bold">Waitlist Url</h5>
               <p className="text-GrayText">
                 Your waitlist url should appear here
@@ -51,7 +51,7 @@ const Create = () => {
             />
           </div>
 
-          <div className="border border-x-0 border-t-0 border-b border-Gray py-6 flex gap-5 items-center justify-between">
+          <div className="border border-x-0 border-t-0 border-b border-Gray py-6 flex flex-col lg:flex-row gap-5 items-center justify-between">
             <div>
               <h5 className="font-bold">Email new waiters</h5>
               <p className="text-GrayText">

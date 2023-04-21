@@ -21,8 +21,8 @@ const Home = () => {
                   key={i}
                   className="min-w-fit border border-GrayDark rounded-md flex"
                 >
-                  <div className="h-full bg-[#493ee6] text-white py-5 px-6 rounded-l-md m-auto">
-                    TE
+                  <div className="h-full bg-[#493ee6] text-white py-5 px-6 rounded-l-md flex items-center">
+                    {list.waitlist_name.toUpperCase().slice(0, 2)}
                   </div>
                   <div className="px-3 py-2 m-auto">
                     <p>{list.waitlist_name}</p>
