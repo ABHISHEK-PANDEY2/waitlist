@@ -8,7 +8,18 @@ export const UserDataProvider = ({ children }) => {
   const [selectedWaitlist, setSelectedWaitlist] = useState("");
   const [allSignups, setAllSignups] = useState([]);
   const [generalDetail, setGeneralDetail] = useState();
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [uid, setUid] = useState(localStorage.getItem("uid"));
   const deployedUrl = "https://waitlist-site.web.app";
+
+  useEffect(
+    () => {
+      setUser(JSON.parse(localStorage.getItem("user")));
+      setUid(localStorage.getItem("uid"));
+    },
+    [localStorage.getItem("user")],
+    localStorage.getItem("uid")
+  );
 
   const getWaitlists = async () => {
     const data = await getAllWaitlist();
@@ -42,6 +53,8 @@ export const UserDataProvider = ({ children }) => {
         getAllSignups,
         getGeneralDetail,
         generalDetail,
+        user,
+        uid,
       }}
     >
       {children}

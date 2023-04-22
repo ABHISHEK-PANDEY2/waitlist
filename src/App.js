@@ -14,31 +14,45 @@ import ComponentNav from "./components/ComponentNav";
 import Waitlist from "./pages/Waitlist";
 import { UserDataProvider } from "./context/useUserData";
 import General from "./components/general";
-import { render } from "@testing-library/react";
+import Widget from "./components/widget";
+import Signup from "./pages/signup/signup";
+import Signin from "./pages/signup/signin";
 
 function App() {
   return (
     <Router>
       <UserDataProvider>
         <div className="App h-screen w-full flex">
-          <Navbar />
-          <div className="h-full w-full">
-            <TopNav />
-            <div className="px-5 py-5 lg:px-8 ">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/create" element={<Create />} />
-                <Route
-                  path="/waitlist"
-                  element={<Waitlist />}
-                  render={<Navigate to="/waitlist/general" />}
-                >
-                  <Route index path="general" element={<General />} />
-                  <Route path="signups" element={<Signups />} />
-                </Route>
-              </Routes>
-            </div>
-          </div>
+          <Routes>
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/signin" element={<Signin />} />
+            <Route
+              path="/*"
+              element={
+                <>
+                  <Navbar />
+                  <div className="h-full w-full">
+                    <TopNav />
+                    <div className="px-5 py-5 lg:px-8 ">
+                      <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/create" element={<Create />} />
+                        <Route
+                          path="/waitlist"
+                          element={<Waitlist />}
+                          render={<Navigate to="/waitlist/general" />}
+                        >
+                          <Route index path="general" element={<General />} />
+                          <Route path="widget" element={<Widget />} />
+                          <Route path="signups" element={<Signups />} />
+                        </Route>
+                      </Routes>
+                    </div>
+                  </div>
+                </>
+              }
+            />
+          </Routes>
         </div>
       </UserDataProvider>
     </Router>

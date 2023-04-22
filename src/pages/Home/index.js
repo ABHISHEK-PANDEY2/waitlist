@@ -8,7 +8,7 @@ const Home = () => {
     <>
       <section className="">
         <p className="font-semibold text-GrayText mb-5">All Waitlist</p>
-        <div className="flex flex-auto flex-wrap gap-5 justify-center">
+        <div className="flex flex-auto flex-wrap gap-5">
           {allWaitlist.map((list, i) => {
             return (
               <Link
