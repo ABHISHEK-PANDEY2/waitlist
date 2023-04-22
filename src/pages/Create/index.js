@@ -1,9 +1,14 @@
 import { useState } from "react";
 import { createWaitlist } from "../../config/firebase.config";
 import { useUserData } from "../../context/useUserData";
+import { useNavigate } from "react-router-dom";
 
 const Create = () => {
-  const { deployedUrl } = useUserData();
+  const { deployedUrl, uid } = useUserData();
+  const navigate = useNavigate();
+  if (!uid) {
+    navigate("signin");
+  }
   const [waitlistName, setWaitlistName] = useState("");
   const [id, setId] = useState();
   const url = id ? `${deployedUrl}/?id=${id}` : "";

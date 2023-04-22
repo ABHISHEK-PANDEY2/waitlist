@@ -1,9 +1,13 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUserData } from "../../context/useUserData";
 
 const Home = () => {
-  const { allWaitlist, getWaitlists, setSelectedWaitlist } = useUserData();
+  const { allWaitlist, getWaitlists, setSelectedWaitlist, uid } = useUserData();
+  const navigate = useNavigate();
+  if (!uid) {
+    navigate("signin");
+  }
   return (
     <>
       <section className="">

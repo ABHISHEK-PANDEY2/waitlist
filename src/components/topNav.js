@@ -4,9 +4,12 @@ import { SignOut } from "../config/firebase.config";
 import { useNavigate } from "react-router-dom";
 
 const TopNav = () => {
-  const { user } = useUserData();
-  const [isClicked, setIsClicked] = useState(false);
+  const { user, uid } = useUserData();
   const navigate = useNavigate();
+  if (!uid) {
+    navigate("signin");
+  }
+  const [isClicked, setIsClicked] = useState(false);
   const logout = async () => {
     const res = await SignOut();
     if (res === "success") {

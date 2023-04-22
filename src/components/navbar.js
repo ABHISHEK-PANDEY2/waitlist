@@ -8,9 +8,14 @@ import { Link } from "react-router-dom";
 import { useUserData } from "../context/useUserData";
 import { useEffect, useState } from "react";
 import Drawer from "@mui/material/Drawer";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  const { getWaitlists, allWaitlist, setSelectedWaitlist } = useUserData();
+  const { getWaitlists, allWaitlist, setSelectedWaitlist, uid } = useUserData();
+  const navigate = useNavigate();
+  if (!uid) {
+    navigate("signin");
+  }
   const [openDrawer, setOpenDrawer] = useState(false);
   const toggleDrawer = () => {
     setOpenDrawer((prev) => !prev);
