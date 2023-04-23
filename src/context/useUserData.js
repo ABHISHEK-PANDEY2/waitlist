@@ -5,7 +5,9 @@ const UserDataContext = createContext();
 
 export const UserDataProvider = ({ children }) => {
   const [allWaitlist, setAllWaitlist] = useState([]);
-  const [selectedWaitlist, setSelectedWaitlist] = useState("");
+  const [selectedWaitlist, setSelectedWaitlist] = useState(
+    localStorage.getItem("selectedID")
+  );
   const [allSignups, setAllSignups] = useState([]);
   const [generalDetail, setGeneralDetail] = useState();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
@@ -21,17 +23,20 @@ export const UserDataProvider = ({ children }) => {
     localStorage.getItem("uid")
   );
 
+  useEffect(() => {
+    setSelectedWaitlist(localStorage.getItem("selectedID"));
+  }, [localStorage.getItem("selectedID")]);
+
   const getWaitlists = async () => {
     const data = await getAllWaitlist();
     setAllWaitlist(data);
   };
 
-  const getGeneralDetail = () => {
-    console.log(selectedWaitlist);
+  const getGeneralDetail = async () => {
     const detail = allWaitlist.filter(
       (list) => list.waitlist_id == selectedWaitlist
     );
-    console.log(detail);
+    console.log(...detail);
     setGeneralDetail(...detail);
   };
 

@@ -5,8 +5,8 @@ import { useUserData } from "../../context/useUserData";
 const Home = () => {
   const { allWaitlist, getWaitlists, setSelectedWaitlist, uid } = useUserData();
   const navigate = useNavigate();
-  if (!uid) {
-    navigate("signin");
+  if (!localStorage.getItem("uid")) {
+    navigate("/signin");
   }
   return (
     <>

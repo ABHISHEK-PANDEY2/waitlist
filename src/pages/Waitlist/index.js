@@ -6,8 +6,8 @@ import { useUserData } from "../../context/useUserData";
 const Waitlist = () => {
   const { uid } = useUserData();
   const navigate = useNavigate();
-  if (!uid) {
-    navigate("signin");
+  if (!localStorage.getItem("uid")) {
+    navigate("/signin");
   }
   useEffect(() => {
     navigate("/waitlist/general");

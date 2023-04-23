@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 const TopNav = () => {
   const { user, uid } = useUserData();
   const navigate = useNavigate();
-  if (!uid) {
-    navigate("signin");
+  if (!localStorage.getItem("uid")) {
+    navigate("/signin");
   }
   const [isClicked, setIsClicked] = useState(false);
   const logout = async () => {

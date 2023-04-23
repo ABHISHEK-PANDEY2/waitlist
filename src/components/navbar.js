@@ -13,8 +13,8 @@ import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const { getWaitlists, allWaitlist, setSelectedWaitlist, uid } = useUserData();
   const navigate = useNavigate();
-  if (!uid) {
-    navigate("signin");
+  if (!localStorage.getItem("uid")) {
+    navigate("/signin");
   }
   const [openDrawer, setOpenDrawer] = useState(false);
   const toggleDrawer = () => {
@@ -58,6 +58,7 @@ const Navbar = () => {
                   <Link
                     to="/waitlist/general"
                     onClick={() => {
+                      localStorage.setItem("selectedID", list.waitlist_id);
                       setSelectedWaitlist(list.waitlist_id);
                     }}
                     className="flex items-center gap-2"
@@ -102,6 +103,7 @@ const Navbar = () => {
                     <Link
                       to="/waitlist/general"
                       onClick={() => {
+                        localStorage.setItem("selectedID", list.waitlist_id);
                         setSelectedWaitlist(list.waitlist_id);
                       }}
                       className="flex items-center gap-2"

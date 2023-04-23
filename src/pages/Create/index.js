@@ -6,16 +6,18 @@ import { useNavigate } from "react-router-dom";
 const Create = () => {
   const { deployedUrl, uid } = useUserData();
   const navigate = useNavigate();
-  if (!uid) {
-    navigate("signin");
+  if (!localStorage.getItem("uid")) {
+    navigate("/signin");
   }
   const [waitlistName, setWaitlistName] = useState("");
   const [id, setId] = useState();
-  const url = id ? `${deployedUrl}/?id=${id}` : "";
+  const url = id ? `${deployedUrl}/?waitlistid=${id}` : "";
   const handleSubmit = async () => {
     const listId = await createWaitlist(waitlistName);
     console.log(listId);
     setId(listId);
+    navigate("/waitlist/general");
+    window.location.reload(false);
   };
 
   return (

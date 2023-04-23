@@ -11,8 +11,8 @@ const Signup = () => {
     const res = await signUpWithEmailAndPassword1(password, email);
     if (res === "success") {
       console.log(res);
-      window.location.reload(false);
       navigate("/");
+      window.location.reload(false);
     }
   };
 

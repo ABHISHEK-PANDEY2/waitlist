@@ -42,7 +42,7 @@ const General = () => {
               Your waitlist url should appear here
             </p>
           </div>
-          <p className="w-full max-w-xl">{`${deployedUrl}/?id=${generalDetail.waitlist_id}`}</p>
+          <p className="w-full max-w-xl">{`${deployedUrl}/?waitlistid=${generalDetail.waitlist_id}`}</p>
         </div>
 
         <div className="border border-x-0 border-t-0 border-b border-Gray py-6 flex gap-5 items-center justify-between flex-col lg:flex-row">
