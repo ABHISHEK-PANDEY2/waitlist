@@ -4,7 +4,16 @@ import { useUserData } from "../context/useUserData";
 
 const Signups = () => {
   const { getAllSignups, allSignups } = useUserData();
+  console.log(allSignups[0]?.joined_at);
+  function convertTimestamp(timestamp) {
+    let date = timestamp.toDate();
+    let mm = date.getMonth() + 1;
+    let dd = date.getDate();
+    let yyyy = date.getFullYear();
 
+    date = dd + "/" + mm + "/" + yyyy;
+    return date;
+  }
   useEffect(() => {
     getAllSignups();
   }, []);
@@ -42,26 +51,30 @@ const Signups = () => {
             <div className="col-span-2">Referrals Made</div>
             <div className="col-span-2">Phone</div>
           </div>
-          {allSignups.map((user, i) => {
-            return (
-              <div
-                key={i}
-                className="h-10 items-center  border-0 border-b border-Gray grid grid-cols-12 min-w-[1000px]"
-              >
-                <div className="col-span-1 flex justify-center">
-                  <input type="checkbox" />
+          {allSignups
+            .sort((a, b) => b.referrals_made - a.referrals_made)
+            .map((user, i) => {
+              return (
+                <div
+                  key={i}
+                  className="h-10 items-center  border-0 border-b border-Gray grid grid-cols-12 min-w-[1000px]"
+                >
+                  <div className="col-span-1 flex justify-center">
+                    <input type="checkbox" />
+                  </div>
+                  <div className="col-span-1">{i + 1}</div>
+                  <div className="col-span-3">{user.email}</div>
+                  <div className="col-span-2">
+                    {convertTimestamp(user.joined_at)}
+                  </div>
+                  <div className="col-span-1">
+                    {user.isReferred ? "Yes" : "No"}
+                  </div>
+                  <div className="col-span-2">{user.referrals_made}</div>
+                  <div className="col-span-2">N/A</div>
                 </div>
-                <div className="col-span-1">{user.waiting_position}</div>
-                <div className="col-span-3">{user.email}</div>
-                <div className="col-span-2">21/07/2023</div>
-                <div className="col-span-1">
-                  {user.isReferred ? "Yes" : "No"}
-                </div>
-                <div className="col-span-2">{user.refferals_made}</div>
-                <div className="col-span-2">N/A</div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       </section>
     </>

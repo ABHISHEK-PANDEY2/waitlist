@@ -8,6 +8,16 @@ const Home = () => {
   if (!localStorage.getItem("uid")) {
     navigate("/signin");
   }
+
+  function convertTimestamp(timestamp) {
+    let date = timestamp.toDate();
+    let mm = date.getMonth() + 1;
+    let dd = date.getDate();
+    let yyyy = date.getFullYear();
+
+    date = dd + "/" + mm + "/" + yyyy;
+    return date;
+  }
   return (
     <>
       <section className="">
@@ -31,7 +41,8 @@ const Home = () => {
                   <div className="px-3 py-2 m-auto">
                     <p>{list.waitlist_name}</p>
                     <p className=" text-GrayText">
-                      Created: 20-04-2023 | Total Signups: 5
+                      Created: {convertTimestamp(list.updated_on)} | Total
+                      Signups: {list.total_signup_count}
                     </p>
                   </div>
                 </div>

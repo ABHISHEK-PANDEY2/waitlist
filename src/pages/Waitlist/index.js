@@ -11,7 +11,7 @@ const Waitlist = () => {
   }
   useEffect(() => {
     navigate("/waitlist/general");
-    console.log("navigate");
+    // console.log("navigate");
   }, []);
   return (
     <>
